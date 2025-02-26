@@ -12,20 +12,6 @@ public class ModConfig implements ConfigData {
     public Boolean global_toggle = true;
 
     @ConfigEntry.Gui.Tooltip()
-    @ConfigEntry.Category("Ingo")
-    public Boolean enable_info = true;
-    @ConfigEntry.Gui.Tooltip()
-    @ConfigEntry.Category("Ingo")
-    public String info_response = "ingo";
-
-    @ConfigEntry.Gui.Tooltip()
-    @ConfigEntry.Category("Info")
-    public Boolean enable_ingo = true;
-    @ConfigEntry.Gui.Tooltip()
-    @ConfigEntry.Category("Info")
-    public String ingo_response = "ingo";
-
-    @ConfigEntry.Gui.Tooltip()
     @ConfigEntry.Category("Tides")
     public Boolean enable_tides = true;
     @ConfigEntry.Gui.Tooltip()
@@ -38,4 +24,18 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip()
     @ConfigEntry.Category("Winds")
     public String winds_response = "#newwindsnewwins";
+
+    @ConfigEntry.Gui.Tooltip()
+    @ConfigEntry.Category("Info")
+    public Boolean enable_info = true;
+    @ConfigEntry.Gui.Tooltip()
+    @ConfigEntry.Category("Info")
+    public String info_response = "ingo";
+
+    @ConfigEntry.Gui.Tooltip()
+    @ConfigEntry.Category("Ingo")
+    public Boolean enable_ingo = true;
+    @ConfigEntry.Gui.Tooltip()
+    @ConfigEntry.Category("Ingo")
+    public String ingo_response = "ingo";
 }
