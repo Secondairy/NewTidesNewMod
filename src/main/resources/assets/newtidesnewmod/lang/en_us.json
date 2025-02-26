@@ -1,0 +1,31 @@
+{
+  "text.autoconfig.newtidesnewmod.title": "New Tides New Mod Settings",
+  "text.autoconfig.newtidesnewmod.category.Global": "Toggle for All",
+  "text.autoconfig.newtidesnewmod.category.Ingo": "Ingo Settings",
+  "text.autoconfig.newtidesnewmod.category.Info": "Info Settings",
+  "text.autoconfig.newtidesnewmod.category.Tides": "Tides Settings",
+  "text.autoconfig.newtidesnewmod.category.Winds": "Winds Settings",
+
+  "text.autoconfig.newtidesnewmod.option.global_toggle": "Global Toggle",
+  "text.autoconfig.newtidesnewmod.option.global_toggle.@Tooltip": "Toggle all replies",
+
+  "text.autoconfig.newtidesnewmod.option.enable_info": "Auto Info Reply",
+  "text.autoconfig.newtidesnewmod.option.enable_info.@Tooltip": "Toggle replies for Info messages",
+  "text.autoconfig.newtidesnewmod.option.info_response": "Custom Info Response Message",
+  "text.autoconfig.newtidesnewmod.option.info_response.@Tooltip": "Set a custom message to be sent to chat when Info notices appear",
+
+  "text.autoconfig.newtidesnewmod.option.enable_ingo": "Auto Ingo Reply",
+  "text.autoconfig.newtidesnewmod.option.enable_ingo.@Tooltip": "Toggle replies for rare natural ingo messages",
+  "text.autoconfig.newtidesnewmod.option.ingo_response": "Custom Ingo Response Message",
+  "text.autoconfig.newtidesnewmod.option.ingo_response.@Tooltip": "Set a custom message to be sent to chat when secret Ingo notice appears",
+
+  "text.autoconfig.newtidesnewmod.option.enable_tides": "Auto Tides Reply",
+  "text.autoconfig.newtidesnewmod.option.enable_tides.@Tooltip": "Toggle replies for new tides",
+  "text.autoconfig.newtidesnewmod.option.tides_response": "Custom Tides Response Message",
+  "text.autoconfig.newtidesnewmod.option.tides_response.@Tooltip": "Set a custom message to be sent to chat when the tides change",
+
+  "text.autoconfig.newtidesnewmod.option.enable_winds": "Auto Winds Reply",
+  "text.autoconfig.newtidesnewmod.option.enable_winds.@Tooltip": "Toggle replies for new winds",
+  "text.autoconfig.newtidesnewmod.option.winds_response": "Custom Winds Response Message",
+  "text.autoconfig.newtidesnewmod.option.winds_response.@Tooltip": "Set a custom message to be sent to chat when winds change"
+}

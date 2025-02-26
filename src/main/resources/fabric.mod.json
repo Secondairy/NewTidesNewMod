@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "newtidesnewmod",
+  "version": "${version}",
+  "name": "NewTidesNewMod",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/newtidesnewmods/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.secondairy.client.NewTidesNewModClient"
+    ],
+    "main": [
+      "me.secondairy.NewTidesNewMod"
+    ],
+    "modmenu": [
+      "me.secondairy.config.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "newtidesnewmods.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "cloth-config": "*",
+    "modmenu": "*"
+  }
+}
