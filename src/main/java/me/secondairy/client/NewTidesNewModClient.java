@@ -35,19 +35,19 @@ public class NewTidesNewModClient implements ClientModInitializer {
                     || raw_message.contains("literal{\uE0B0}");
 
             if (config.enable_info && info_detected) {
-                MinecraftClient.getInstance().getNetworkHandler().sendChatMessage(config.info_response);
+                MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("/local " + config.info_response);
             }
 
             else if (config.enable_ingo && ingo_detected) {
-                MinecraftClient.getInstance().getNetworkHandler().sendChatMessage(config.ingo_response);
+                MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("/local " + config.ingo_response);
             }
 
             else if (config.enable_tides && tides_detected) {
-                MinecraftClient.getInstance().getNetworkHandler().sendChatMessage(config.tides_response);
+                MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("/local " + config.tides_response);
             }
 
             else if (config.enable_winds && winds_detected) {
-                MinecraftClient.getInstance().getNetworkHandler().sendChatMessage(config.winds_response);
+                MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("/local " + config.tides_response);
             }
         });
     }
