@@ -7,10 +7,10 @@ version = getVersion()
 group = project.maven_group
 
 static def getVersion() {
-    def date = new Date();
-    def formatMajor = date.format('yyyy-MM-dd');
+    def date = new Date()
+    def formatMajor = date.format('yyyy-MM-dd')
     def formatMinor = date.format("HHmmss")
-    def build = "v" + formatMajor + "-b" + formatMinor;
+    def build = "v" + formatMajor + "-b" + formatMinor
     return build
 }
 
