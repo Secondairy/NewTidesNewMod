@@ -3,11 +3,11 @@
   "id": "newtidesnewmod",
   "version": "${version}",
   "name": "NewTidesNewMod",
-  "description": "",
-  "authors": [],
+  "description": "Automatically Tides/Winds/Info/Ingo replies",
+  "authors": ["2econdairy"],
   "contact": {},
   "license": "All-Rights-Reserved",
-  "icon": "assets/newtidesnewmods/icon.png",
+  "icon": "assets/newtidesnewmod/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
