@@ -25,14 +25,16 @@ public class NewTidesNewModClient implements ClientModInitializer {
 
             Boolean info_detected = raw_message.contains("siblings=[empty[siblings=[literal{\uE2CB}[style={color=white,font=mcc:icon}]]], literal{] Info:}]]");
             Boolean ingo_detected = raw_message.contains("siblings=[empty[siblings=[literal{\uE2CB}[style={color=white,font=mcc:icon}]]], literal{] Ingo:}]]");
-            Boolean tides_detected = raw_message.contains("literal{\uE0A5}")
-                    || raw_message.contains("literal{\uE0A6}")
-                    || raw_message.contains("literal{\uE0A7}")
-                    || raw_message.contains("literal{\uE0A8}");
-            Boolean winds_detected = raw_message.contains("literal{\uE0AD}")
-                    || raw_message.contains("literal{\uE0AE}")
-                    || raw_message.contains("literal{\uE0AF}")
-                    || raw_message.contains("literal{\uE0B0}");
+            Boolean tides_detected = raw_message.contains("literal{\uE0A5}") //glimmering
+                    || raw_message.contains("literal{\uE0A6}") //greedy
+                    || raw_message.contains("literal{\uE0A7}") //lucky
+                    || raw_message.contains("literal{\uE0A8}") //strong
+                    || raw_message.contains("literal{\uE0A9}"); //wise
+            Boolean winds_detected = raw_message.contains("literal{\uE0AD}") //glimmering
+                    || raw_message.contains("literal{\uE0AE}") //greedy
+                    || raw_message.contains("literal{\uE0AF}") //lucky
+                    || raw_message.contains("literal{\uE0B0}") //strong
+                    || raw_message.contains("literal{\uE0B1}"); //wise
 
             if (config.enable_info && info_detected) {
                 MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("local " + config.info_response);
