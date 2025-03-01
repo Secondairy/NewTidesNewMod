@@ -8,6 +8,8 @@
 
   "text.autoconfig.newtidesnewmod.option.global_toggle": "Global Toggle",
   "text.autoconfig.newtidesnewmod.option.global_toggle.@Tooltip": "Toggle all replies",
+  "text.autoconfig.newtidesnewmod.option.force_fishtance8": "Force Instance change if join on wrong fishtance",
+  "text.autoconfig.newtidesnewmod.option.force_fishtance8.@Tooltip": "Toggle forcing Fishstance 8",
 
   "text.autoconfig.newtidesnewmod.option.enable_info": "Auto Info Reply",
   "text.autoconfig.newtidesnewmod.option.enable_info.@Tooltip": "Toggle replies for Info messages",
@@ -30,5 +32,6 @@
   "text.autoconfig.newtidesnewmod.option.winds_response.@Tooltip": "Set a custom message to be sent to chat when winds change",
 
   "category.newtidesnewmod.keybinds": "§9NewTidesNewMod§r",
-  "key.newtidesnewmod.global_toggle": "Global Toggle"
+  "key.newtidesnewmod.global_toggle": "Global Toggle",
+  "key.newtidesnewmod.join_fishtance_8": "Join Instance 8"
 }
