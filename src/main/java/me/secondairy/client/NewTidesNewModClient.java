@@ -84,7 +84,7 @@ public class NewTidesNewModClient implements ClientModInitializer {
                 ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
                 scheduler.schedule(() -> {
-                    MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("local " + config.tides_response);
+                    MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("local " + config.winds_response);
                 }, 300, TimeUnit.MILLISECONDS);
             }
         });
