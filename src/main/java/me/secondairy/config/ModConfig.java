@@ -12,6 +12,10 @@ public class ModConfig implements ConfigData {
     public Boolean global_toggle = true;
 
     @ConfigEntry.Gui.Tooltip()
+    @ConfigEntry.Category("Global")
+    public Boolean force_fishtance8 = true;
+
+    @ConfigEntry.Gui.Tooltip()
     @ConfigEntry.Category("Tides")
     public Boolean enable_tides = true;
     @ConfigEntry.Gui.Tooltip()
