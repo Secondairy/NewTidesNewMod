@@ -1,15 +1,19 @@
 package me.secondairy.client;
 
 import me.secondairy.config.ModConfig;
+import me.secondairy.keybinding.GlobalToggleKeybind;
+import me.secondairy.keybinding.JoinF8Keybind;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
+import net.minecraft.util.WorldSavePath;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.concurrent.Executors;
@@ -18,32 +22,17 @@ import java.util.concurrent.TimeUnit;
 
 public class NewTidesNewModClient implements ClientModInitializer {
 
-    private static KeyBinding keyBinding;
+    public boolean inFishtance;
 
     @Override
     public void onInitializeClient() {
 
-        keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.newtidesnewmod.global_toggle",
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_K,
-                "category.newtidesnewmod.keybinds"
-        ));
-
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client.player == null) {return;}
-            while (keyBinding.wasPressed()) {
-                ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-                config.global_toggle = !config.global_toggle;
-                String color = "§c ";
-                if (config.global_toggle) {
-                    color = "§a ";
-                }
-                client.player.sendMessage(Text.literal("§6[§9NewTidesNewMod§6]§r Auto reply has been toggled to:" + color + config.global_toggle), false);
-            }
-        });
+        new GlobalToggleKeybind();
+        new JoinF8Keybind();
 
         ClientReceiveMessageEvents.GAME.register((message, overlay) -> {
+
+            if (!inFishtance) {return;}
 
             String raw_message = message.toString();
 
@@ -85,6 +74,32 @@ public class NewTidesNewModClient implements ClientModInitializer {
 
                 scheduler.schedule(() -> {
                     MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("local " + config.winds_response);
+                }, 300, TimeUnit.MILLISECONDS);
+            }
+        });
+
+        ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
+            if (client.world == null) {return;}
+            if (MinecraftClient.getInstance().getNetworkHandler() == null) {return;}
+
+            String world_name = client.world.getRegistryKey().getValue().toString();
+
+            boolean in_fishtance_8 = world_name.contains("6223c6ac-7550-446d-8512-01ef562ce305");
+            inFishtance = in_fishtance_8;
+            if (in_fishtance_8) {return;}
+
+            ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+            if (!config.force_fishtance8) {return;}
+
+            boolean other_fishtance = world_name.contains("a51591e2-e052-4c2a-9ca8-bc65d46721e6") //fishtance 9
+                    || world_name.contains("388d6e1f-0d10-482b-80ba-1305c92118bb") //fishtance 10
+                    || world_name.contains("c04058a2-15b0-4764-b598-2f512822bc11") //fishtance 11
+                    || world_name.contains("a259713d-0806-43b3-a13b-af2b352e05b5"); //fishstance 12
+
+            if (other_fishtance) {
+                ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+                scheduler.schedule(() -> {
+                    MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("instance join 8");
                 }, 300, TimeUnit.MILLISECONDS);
             }
         });
