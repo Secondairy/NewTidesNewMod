@@ -3,13 +3,45 @@ package me.secondairy.client;
 import me.secondairy.config.ModConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
+import net.minecraft.text.Text;
+import org.lwjgl.glfw.GLFW;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class NewTidesNewModClient implements ClientModInitializer {
 
+    private static KeyBinding keyBinding;
+
     @Override
     public void onInitializeClient() {
+
+        keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.newtidesnewmod.global_toggle",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_K,
+                "category.newtidesnewmod.keybinds"
+        ));
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (client.player == null) {return;}
+            while (keyBinding.wasPressed()) {
+                ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+                config.global_toggle = !config.global_toggle;
+                String color = "§c ";
+                if (config.global_toggle) {
+                    color = "§a ";
+                }
+                client.player.sendMessage(Text.literal("§6[§9NewTidesNewMod§6]§r Auto reply has been toggled to:" + color + config.global_toggle), false);
+            }
+        });
 
         ClientReceiveMessageEvents.GAME.register((message, overlay) -> {
 
@@ -49,7 +81,11 @@ public class NewTidesNewModClient implements ClientModInitializer {
             }
 
             else if (config.enable_winds && winds_detected) {
-                MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("local " + config.tides_response);
+                ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+                scheduler.schedule(() -> {
+                    MinecraftClient.getInstance().getNetworkHandler().sendChatCommand("local " + config.tides_response);
+                }, 300, TimeUnit.MILLISECONDS);
             }
         });
     }
