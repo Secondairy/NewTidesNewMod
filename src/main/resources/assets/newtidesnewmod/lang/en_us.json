@@ -27,5 +27,8 @@
   "text.autoconfig.newtidesnewmod.option.enable_winds": "Auto Winds Reply",
   "text.autoconfig.newtidesnewmod.option.enable_winds.@Tooltip": "Toggle replies for new winds",
   "text.autoconfig.newtidesnewmod.option.winds_response": "Custom Winds Response Message",
-  "text.autoconfig.newtidesnewmod.option.winds_response.@Tooltip": "Set a custom message to be sent to chat when winds change"
+  "text.autoconfig.newtidesnewmod.option.winds_response.@Tooltip": "Set a custom message to be sent to chat when winds change",
+
+  "category.newtidesnewmod.keybinds": "§9NewTidesNewMod§r",
+  "key.newtidesnewmod.global_toggle": "Global Toggle"
 }
